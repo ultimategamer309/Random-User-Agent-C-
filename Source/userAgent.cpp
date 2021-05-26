@@ -23,7 +23,7 @@ std::string userAgent::getAgent() {
 std::string userAgent::getFirefoxAgent() {
 	std::string agent = "";
 	//always starts the same
-	agent += "Mozilla / 5.0";
+	agent += "Mozilla / 5.0 ";
 	//platform info
 	agent += '(' + getPlatformInfo() + ") ";
 	//add geko and geko trail
@@ -36,7 +36,7 @@ std::string userAgent::getFirefoxAgent() {
 std::string userAgent::getChromeAgent() {
 	std::string agent = "";
 	//always starts the same
-	agent += "Mozilla / 5.0";
+	agent += "Mozilla / 5.0 ";
 	//platform info
 	agent += '(' + getPlatformInfo() + ") AppleWebKit/537.36 ";
 	//add geko
@@ -52,10 +52,8 @@ std::string userAgent::getPlatformInfo() {
 	std::string os;
 
 	//get os
-	int size = countPtreeChilds("os");
-	os = pt.get<std::string>("os." + std::to_string(random(1, size)));
+	os = getRandomChild("os", "");
 	this->os = os;
-	platform += getRandomChild("os", "");
 	//get os platform
 	platform += getRandomChild("os_platform", os);
 	//get cpu
