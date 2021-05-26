@@ -27,4 +27,3 @@ private:
 	pt::ptree pt;
 	std::string os;
 };
-
